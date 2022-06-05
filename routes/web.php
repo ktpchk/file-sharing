@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +21,14 @@ Route::get('/', function () {
 
 // Show Latest Files
 Route::get('/latest', function () {
-    return view('files.latest');
+    return view('files.latest', [
+        'files' => File::get()
+    ]);
 });
 
 // Show Single File
-Route::get('/latest/{id}', function ($id) {
-    return view('files.show');
-})->where('id', '\d+');
+Route::get('/latest/{file}', function (File $file) {
+    return view('files.show', [
+        'file' => $file
+    ]);
+})->where('file', '\d+');

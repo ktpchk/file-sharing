@@ -14,19 +14,19 @@
           <li class="flex space-x-5 border-b border-lightPeach-900">
             <div class="text-2xl">Имя файла:</div>
             <h3 class="text-2xl text-deepPineGreen-50 mb-2">
-              no-img.png
+              {{ $file->name }}
             </h3>
           </li>
           <li class="flex items-baseline space-x-5 border-b border-lightPeach-900">
             <div class="text-2xl">Размер файла:</div>
             <div class="text-xl font-bold text-orange-900 mb-2">
-              32.0 Kb
+              {{ $file->size }} Kb
             </div>
           </li>
           <li class="flex items-baseline space-x-5 border-b border-lightPeach-900">
             <div class="text-2xl">Дата загрузки:</div>
             <div class="text-xl font-bold text-orange-900 mb-2">
-              2022-06-02
+              {{ $file->created_at->toDateString() }}
             </div>
           </li>
         </ul>
@@ -34,17 +34,14 @@
         <div class="self-stretch w-1/2 mx-auto mb-6 p-4 rounded-md border border-lightPeach-900">
           <h3 class="text-xl mb-2">Комментарий автора</h3>
           <p class="text-left">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
-            hic sit obcaecati dignissimos, officiis magni provident
-            aliquam corporis reiciendis exercitationem ea voluptate, quas
-            aperiam quisquam facere vero nulla assumenda quam!
+            {{ $file->comment }}
           </p>
         </div>
         <!-- Download -->
 
         <div class="self-stretch w-1/3 mx-auto">
           <a href="" class="block p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600"><i
-              class="fa-solid fa-file-arrow-down"></i> Download</a>
+              class="fa-solid fa-file-arrow-down"></i> Скачать</a>
         </div>
       </div>
     </div>

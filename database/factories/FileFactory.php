@@ -15,7 +15,8 @@ class FileFactory extends Factory
     {
         return [
             'name' => $this->faker->userName() . '.' . $this->faker->fileExtension(),
-            'size' => $this->faker->randomNumber(3)
+            'size' => $this->faker->randomNumber(3),
+            'comment' => $this->faker->paragraph(3)
         ];
     }
 }

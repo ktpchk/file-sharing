@@ -24,141 +24,32 @@
     </x-card>
 
     <div class="my-4 flex flex-col space-y-1">
-
-      <x-card class="p-4 flex">
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          <div class="-mr-6 flex-auto flex flex-col items-center">
-            <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
-            <a href="/latest/1" class="block text-center hover:text-orange-600">no-img.png</a>
+      @foreach ($files as $file)
+        <x-card class="p-4 flex">
+          <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+            <div class="-mr-6 flex-auto flex flex-col items-center">
+              <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
+              <a href="/latest/{{ $file->id }}"
+                class="block text-center hover:text-orange-600">{{ $file->name }}</a>
+            </div>
           </div>
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          32.0 Kb
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          2022-06-02
-        </div>
-        <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-          quia facilis, doloremque, repellat consectetur excepturi sit
-          laborum beatae sed ullam quasi non explicabo aliquam aut
-          veniam velit vitae suscipit laboriosam?
-        </div>
-        <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
-          <!-- button -->
-          <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
-            <i class="fa-solid fa-file-arrow-down"></i> Скачать
-          </a>
-        </div>
-      </x-card>
-
-      <x-card class="p-4 flex">
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          <div class="-mr-6 flex-auto flex flex-col items-center">
-            <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
-            <a href="/latest/1" class="block text-center hover:text-orange-600">no-img.png</a>
+          <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+            {{ $file->size }} Kb
           </div>
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          32.0 Kb
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          2022-06-02
-        </div>
-        <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-          quia facilis, doloremque, repellat consectetur excepturi sit
-          laborum beatae sed ullam quasi non explicabo aliquam aut
-          veniam velit vitae suscipit laboriosam?
-        </div>
-        <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
-          <!-- button -->
-          <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
-            <i class="fa-solid fa-file-arrow-down"></i> Скачать
-          </a>
-        </div>
-      </x-card>
-
-      <x-card class="p-4 flex">
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          <div class="-mr-6 flex-auto flex flex-col items-center">
-            <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
-            <a href="/latest/1" class="block text-center hover:text-orange-600">no-img.png</a>
+          <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+            {{ $file->created_at->toDateString() }}
           </div>
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          32.0 Kb
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          2022-06-02
-        </div>
-        <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-          quia facilis, doloremque, repellat consectetur excepturi sit
-          laborum beatae sed ullam quasi non explicabo aliquam aut
-          veniam velit vitae suscipit laboriosam?
-        </div>
-        <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
-          <!-- button -->
-          <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
-            <i class="fa-solid fa-file-arrow-down"></i> Скачать
-          </a>
-        </div>
-      </x-card>
-
-      <x-card class="p-4 flex">
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          <div class="-mr-6 flex-auto flex flex-col items-center">
-            <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
-            <a href="/latest/1" class="block text-center hover:text-orange-600">no-img.png</a>
+          <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
+            {{ $file->comment }}
           </div>
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          32.0 Kb
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          2022-06-02
-        </div>
-        <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-          quia facilis, doloremque, repellat consectetur excepturi sit
-          laborum beatae sed ullam quasi non explicabo aliquam aut
-          veniam velit vitae suscipit laboriosam?
-        </div>
-        <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
-          <!-- button -->
-          <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
-            <i class="fa-solid fa-file-arrow-down"></i> Скачать
-          </a>
-        </div>
-      </x-card>
-
-      <x-card class="p-4 flex">
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          <div class="-mr-6 flex-auto flex flex-col items-center">
-            <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
-            <a href="/latest/1" class="block text-center hover:text-orange-600">no-img.png</a>
+          <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
+            <!-- button -->
+            <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
+              <i class="fa-solid fa-file-arrow-down"></i> Скачать
+            </a>
           </div>
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          32.0 Kb
-        </div>
-        <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-          2022-06-02
-        </div>
-        <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-          quia facilis, doloremque, repellat consectetur excepturi sit
-          laborum beatae sed ullam quasi non explicabo aliquam aut
-          veniam velit vitae suscipit laboriosam?
-        </div>
-        <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
-          <!-- button -->
-          <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
-            <i class="fa-solid fa-file-arrow-down"></i> Скачать
-          </a>
-        </div>
-      </x-card>
+        </x-card>
+      @endforeach
     </div>
   </div>
 
