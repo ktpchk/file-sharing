@@ -37,4 +37,10 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    // Relationship With Files
+    public function files()
+    {
+        return $this->hasMany(File::class, 'user_id');
+    }
 }
