@@ -14,9 +14,15 @@ class FileFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->userName() . '.' . $this->faker->fileExtension(),
+            'name' => $this->faker->word() . '.' . $this->faker->fileExtension(),
             'size' => $this->faker->randomNumber(3),
             'comment' => $this->faker->paragraph(3)
         ];
+    }
+
+    // Relationship To User
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
