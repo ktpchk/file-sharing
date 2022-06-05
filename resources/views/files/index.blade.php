@@ -1,43 +1,67 @@
 <x-layout>
-  <div class="container mx-auto flex-auto flex items-center justify-center">
-    <!-- Drop your files -->
-    <div class="my-16">
-      <form action="" method="post" class="h-full">
-        @csrf
-        <div
-          class="w-96 h-60 mx-auto border-4 border-dashed border-deepPineGreen-50 border-opacity-50 hover:bg-lightPeach-900 hover:bg-opacity-25">
-          <label class="h-full cursor-pointer flex items-center justify-around">
-            <div class="flex flex-col items-center space-y-4">
-              <div class="text-deepPineGreen-50 bg-inherit">
-                <i class="fa-solid fa-file-arrow-up"></i>
-                Выберите файл
+  <div class="container mx-auto">
+    <h2 class="text-5xl text-center m-4 py-6">
+      Последние загруженные пользователями файлы
+    </h2>
+    @include('partials._search')
+
+    <x-card class="p-2 flex">
+      <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+        Имя файла
+      </div>
+      <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+        Размер
+      </div>
+      <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+        Дата загрузки
+      </div>
+      <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
+        Комментарий
+      </div>
+      <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+        Скачать
+      </div>
+    </x-card>
+
+    <div class="my-4 flex flex-col space-y-1">
+      @unless(count($files) == 0)
+        @foreach ($files as $file)
+          <x-card class="p-4 flex">
+            <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+              <div class="-mr-6 flex-auto flex flex-col items-center">
+                <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
+                <a href="/latest/{{ $file->id }}"
+                  class="block text-center hover:text-orange-600">{{ $file->name }}</a>
               </div>
-              <input type="file" class="hidden" id="fileLoader" />
-              <div id="output" class="text-deepPineGreen-200"></div>
             </div>
-          </label>
-        </div>
-        <div id="form" class="hidden w-96 mx-auto">
-          <x-card class="mt-4 p-4 flex flex-col space-y-3">
-            <div class="flex flex-col space-y-1 items-center justify-between">
-              <label for="name" class="self-start">Имя файла:</label>
-              <input id="name" name="name" type="text"
-                class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50" />
+            <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+              {{ $file->size }} Kb
             </div>
-            <div class="flex flex-col space-y-1 items-center justify-between">
-              <label for="comment" class="self-start">Ваш комментарий:</label>
-              <textarea id="comment" name="comment" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50"
-                rows="7"></textarea>
+            <div class="w-1/4 md:w-1/5 flex items-center justify-center">
+              {{ $file->created_at->toDateString() }}
             </div>
-            <div>
-              <button type="submit"
-                class="block w-2/3 mx-auto p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600 font-medium">
-                Загрузить
-              </button>
+            <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
+              {{ $file->comment }}
+            </div>
+            <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
+              <!-- button -->
+              <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
+                <i class="fa-solid fa-file-arrow-down"></i> Скачать
+              </a>
             </div>
           </x-card>
-        </div>
-      </form>
+        @endforeach
+      @else
+        <x-card class="p-4">
+          @if ($searchValue)
+            <div class="">Файлы по запросу "{{ $searchValue }}" не найдены.</div>
+          @else
+            <div class="">Файлы не найдены.</div>
+          @endif
+        </x-card>
+      @endunless
+
     </div>
   </div>
+
 </x-layout>

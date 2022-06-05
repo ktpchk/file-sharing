@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\File;
+use App\Http\Controllers\FileController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,21 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Show Main Page
-Route::get('/', function () {
-    return view('files.index');
-});
+// Show Create Form
+Route::get('/', [FileController::class, 'create']);
 
 // Show Latest Files
-Route::get('/latest', function () {
-    return view('files.latest', [
-        'files' => File::get()
-    ]);
-});
+Route::get('/latest', [FileController::class, 'index']);
 
 // Show Single File
-Route::get('/latest/{file}', function (File $file) {
-    return view('files.show', [
-        'file' => $file
-    ]);
-})->where('file', '\d+');
+Route::get('/latest/{file}', [FileController::class, 'show']);
+
+// Store File Data
+Route::post('/files', [FileController::class, 'store']);
