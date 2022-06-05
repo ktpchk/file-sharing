@@ -19,10 +19,4 @@ class FileFactory extends Factory
             'comment' => $this->faker->paragraph(3)
         ];
     }
-
-    // Relationship To User
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

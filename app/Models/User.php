@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relationship With Files
+    public function files()
+    {
+        return $this->hasMany(File::class, 'user_id');
+    }
 }
