@@ -37,12 +37,10 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg'];
-
         $input = $request->validate([
             'file' => 'required|file',
             'comment' => 'nullable|max:255'
         ]);
-
         $data = [
             'user_id' => 1,
             'name' => $input['file']->getClientOriginalName(),
@@ -51,10 +49,9 @@ class FileController extends Controller
             'size' => $input['file']->getSize(),
             'comment' => $input['comment']
         ];
-
         File::create($data);
 
-        return redirect('/latest')->with('message', 'Файл успешно загружен!');
+        return redirect('/')->with('message', 'Файл успешно загружен!');
     }
 
     // Download File

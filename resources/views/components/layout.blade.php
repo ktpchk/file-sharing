@@ -8,6 +8,7 @@
   <title>File Sharing</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/14de4b1c37.js" crossorigin="anonymous"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -69,23 +70,38 @@
           </div>
           <!-- Navbar -->
           <div class="hidden lg:flex justify-between items-center space-x-12">
-            <a href="/latest" class="hover:text-deepPineGreen-100 text-2xl">Недавнее</a>
+            <a href="/files/latest" class="hover:text-deepPineGreen-100 text-2xl">Недавнее</a>
             <a href="/terms" class="hover:text-deepPineGreen-100 text-2xl">Правила</a>
             <a href="/faq" class="hover:text-deepPineGreen-100 text-2xl">FAQ</a>
           </div>
-          <!-- Register/Login -->
-          <div class="flex justify-between items-center space-x-6">
-            <a href="#" class="hover:text-deepPineGreen-100 text-lg"><i class="fa-solid fa-user-plus"></i>
-              Зарегистрироваться</a>
-            <a href="#" class="hover:text-deepPineGreen-100 text-lg"><i class="fa-solid fa-arrow-right-to-bracket"></i>
-              Войти</a>
-          </div>
+          @auth
+            <div class="flex justify-between items-center space-x-6">
+              <a href="/files/manage" class="hover:text-deepPineGreen-100 text-lg"><i class="fa-solid fa-list"></i></i>
+                Мои файлы</a>
+              <form action="/logout" method="POST">
+                @csrf
+                <button class="font-medium hover:text-deepPineGreen-100 text-lg">
+                  <i class="fa-solid fa-door-open"></i>
+                  Выйти
+                </button>
+              </form>
+            </div>
+          @else
+            <!-- Register/Login -->
+            <div class="flex justify-between items-center space-x-6">
+              <a href="/register" class="hover:text-deepPineGreen-100 text-lg"><i class="fa-solid fa-user-plus"></i>
+                Зарегистрироваться</a>
+              <a href="/login" class="hover:text-deepPineGreen-100 text-lg"><i
+                  class="fa-solid fa-arrow-right-to-bracket"></i>
+                Войти</a>
+            </div>
+          @endauth
           <!-- Hamburger -->
           <!-- Menu -->
         </div>
       </div>
     </nav>
-    <main class="flex-auto bg-lightPeach-400">
+    <main class="flex-auto bg-lightPeach-400 flex">
       {{ $slot }}
     </main>
     <footer class="bg-lightPeach-500 shadow-inner z-10">
@@ -97,6 +113,7 @@
       </div>
     </footer>
   </div>
+  <x-flash-message />
   <script src="js/script.js"></script>
 </body>
 

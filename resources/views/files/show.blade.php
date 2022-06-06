@@ -3,11 +3,17 @@
     <a href="{{ url()->previous() }}" class="inline-block ml-4 mt-4 hover:text-deepPineGreen-100 text-2xl"><i
         class="fa-solid fa-arrow-left"></i> Назад
     </a>
-    <div class="my-4 p-8 bg-white shadow-md rounded-md border-2 border-lightPeach-900">
+    <x-card class="my-4 p-8">
       <div class="flex flex-col items-center justify-center text-center">
+        <!-- Header -->
+        <h2 class="text-6xl mb-12">
+          {{ $file->name }}
+        </h2>
         <!-- Image -->
         <div class="mb-6 max-w-3xl">
-          <img src="{{ asset('img/no-image.png') }}" class="rounded-md" alt=" " />
+          @if ($file->imagePath)
+            <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full" alt="" />
+          @endif
         </div>
         <!-- Information -->
         <ul class="flex flex-col mb-4">
@@ -20,7 +26,13 @@
           <li class="flex items-baseline space-x-5 border-b border-lightPeach-900">
             <div class="text-2xl">Размер файла:</div>
             <div class="text-xl font-bold text-orange-900 mb-2">
-              {{ $file->size }} Kb
+              @if ($file->size <= 1024)
+                {{ $file->size }} bytes
+              @elseif($file->size <= 1024 * 1024)
+                {{ round($file->size / 1024, 2) }} Kb
+              @else
+                {{ round($file->size / 1024 / 1024, 2) }} Mb
+              @endif
             </div>
           </li>
           <li class="flex items-baseline space-x-5 border-b border-lightPeach-900">
@@ -31,19 +43,24 @@
           </li>
         </ul>
         <!-- Comment -->
-        <div class="self-stretch w-1/2 mx-auto mb-6 p-4 rounded-md border border-lightPeach-900">
-          <h3 class="text-xl mb-2">Комментарий автора</h3>
-          <p class="text-left">
-            {{ $file->comment }}
-          </p>
-        </div>
+        @if ($file->comment)
+          <div class="self-stretch w-1/2 mx-auto mb-6 p-10 rounded-md border border-lightPeach-900">
+            <h3 class="text-xl mb-2">Комментарий автора</h3>
+            <p class="text-left">
+              {{ $file->comment }}
+            </p>
+          </div>
+        @endif
+
         <!-- Download -->
 
         <div class="self-stretch w-1/3 mx-auto">
-          <a href="" class="block p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600"><i
-              class="fa-solid fa-file-arrow-down"></i> Скачать</a>
+          <a href="/files/{{ $file->id }}/download"
+            class="block p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
+            <i class="fa-solid fa-file-arrow-down"></i> Скачать
+          </a>
         </div>
       </div>
-    </div>
+    </x-card>
   </div>
 </x-layout>

@@ -1,7 +1,7 @@
 <x-layout>
   <div class="container mx-auto flex-auto flex items-center justify-center">
     <!-- Drop your files -->
-    <div class="my-16">
+    <div class="">
 
       <form action="/files" method="post" class="h-full" enctype="multipart/form-data">
         @csrf
@@ -46,6 +46,13 @@
 
           </x-card>
         </div>
+
+        @error('file')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
+        @error('comment')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </form>
 
     </div>

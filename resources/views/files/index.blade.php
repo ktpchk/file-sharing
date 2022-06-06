@@ -32,12 +32,18 @@
                 @if ($file->imagePath)
                   <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full" alt="" />
                 @endif
-                <a href="/latest/{{ $file->id }}"
+                <a href="/files/{{ $file->id }}"
                   class="block text-center hover:text-orange-600">{{ $file->name }}</a>
               </div>
             </div>
             <div class="w-1/4 md:w-1/5 flex items-center justify-center">
-              {{ $file->size }} Kb
+              @if ($file->size <= 1024)
+                {{ $file->size }} bytes
+              @elseif($file->size <= 1024 * 1024)
+                {{ round($file->size / 1024, 2) }} Kb
+              @else
+                {{ round($file->size / 1024 / 1024, 2) }} Mb
+              @endif
             </div>
             <div class="w-1/4 md:w-1/5 flex items-center justify-center">
               {{ $file->created_at->toDateString() }}
