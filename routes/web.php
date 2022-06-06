@@ -24,5 +24,8 @@ Route::get('/latest', [FileController::class, 'index']);
 // Show Single File
 Route::get('/latest/{file}', [FileController::class, 'show']);
 
-// Store File Data
+// Upload File
 Route::post('/files', [FileController::class, 'store']);
+
+// Download File
+Route::get('/files/{file}/download', [FileController::class, 'download']);

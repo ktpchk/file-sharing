@@ -10,7 +10,7 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'comment', 'size', 'user_id', 'path'];
+    protected $fillable = ['name', 'comment', 'size', 'user_id', 'path', 'imagePath'];
 
     public function scopeFilter($query, $search)
     {

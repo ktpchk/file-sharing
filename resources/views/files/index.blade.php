@@ -29,7 +29,9 @@
           <x-card class="p-4 flex">
             <div class="w-1/4 md:w-1/5 flex items-center justify-center">
               <div class="-mr-6 flex-auto flex flex-col items-center">
-                <img src="{{ asset('img/no-image.png') }}" class="max-w-full" alt=" " />
+                @if ($file->imagePath)
+                  <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full" alt="" />
+                @endif
                 <a href="/latest/{{ $file->id }}"
                   class="block text-center hover:text-orange-600">{{ $file->name }}</a>
               </div>
@@ -45,7 +47,8 @@
             </div>
             <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
               <!-- button -->
-              <a href="#" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
+              <a href="/files/{{ $file->id }}/download"
+                class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
                 <i class="fa-solid fa-file-arrow-down"></i> Скачать
               </a>
             </div>

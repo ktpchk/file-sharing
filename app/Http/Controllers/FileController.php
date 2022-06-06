@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -32,9 +33,10 @@ class FileController extends Controller
         return view('files.create');
     }
 
-    // Store File Data
+    // Upload File
     public function store(Request $request)
     {
+        $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg'];
 
         $input = $request->validate([
             'file' => 'required|file',
@@ -45,14 +47,22 @@ class FileController extends Controller
             'user_id' => 1,
             'name' => $input['file']->getClientOriginalName(),
             'path' => $input['file']->store('uploads/' . date('Y-m')),
+            'imagePath' =>  in_array($input['file']->extension(), $imageExtensions) ? $request->file('file')->store('images', 'public') : null,
             'size' => $input['file']->getSize(),
             'comment' => $input['comment']
         ];
 
-
-
         File::create($data);
 
         return redirect('/latest')->with('message', 'Файл успешно загружен!');
+    }
+
+    // Download File
+    public function download(File $file)
+    {
+        $filePath = $file->path;
+
+        $fileName = $file->name;
+        return Storage::download($filePath, $fileName);
     }
 }
