@@ -25,34 +25,41 @@ Route::controller(FileController::class)->group(function () {
     // Show Single File
     Route::get('/files/{file}', 'show');
 
-    // Upload File
-    Route::post('/files', 'store');
-
-    // Show Edit Form
-
-    // Update File Data
-
-    // Delete File
-
-    // Manage Files
-
     // Download File
     Route::get('/files/{file}/download', 'download');
+
+    Route::middleware('auth')->group(function () {
+        // Upload File
+        Route::post('/files', 'store');
+
+        // Show Edit Form
+
+        // Update File Data
+
+        // Delete File
+
+        // Manage Files
+    });
 });
 
 Route::controller(UserController::class)->group(function () {
-    // Show Register/Create Form
-    Route::get('/register', 'create');
 
-    // Create New User
-    Route::post('/users', 'store');
+    Route::middleware('auth')->group(function () {
+        // Logout User
+        Route::post('/logout', 'logout');
+    });
 
-    // Show Login Form
-    Route::get('/login', 'login');
+    Route::middleware('guest')->group(function () {
+        // Show Register/Create Form
+        Route::get('/register', 'create');
 
-    // Log In User
-    Route::post('/users/authenticate', 'authenticate');
+        // Create New User
+        Route::post('/users', 'store');
 
-    // Logout User
-    Route::post('/logout', 'logout');
+        // Show Login Form
+        Route::get('/login', 'login')->name('login');
+
+        // Log In User
+        Route::post('/users/authenticate', 'authenticate');
+    });
 });
