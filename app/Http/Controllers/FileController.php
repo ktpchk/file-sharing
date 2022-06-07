@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -42,7 +43,7 @@ class FileController extends Controller
             'comment' => 'nullable|max:255'
         ]);
         $data = [
-            'user_id' => 1,
+            'user_id' => auth()->id(),
             'name' => $input['file']->getClientOriginalName(),
             'path' => $input['file']->store('uploads/' . date('Y-m')),
             'imagePath' =>  in_array($input['file']->extension(), $imageExtensions) ? $request->file('file')->store('images', 'public') : null,
@@ -61,5 +62,11 @@ class FileController extends Controller
 
         $fileName = $file->name;
         return Storage::download($filePath, $fileName);
+    }
+
+    // Manage Files
+    public function manage()
+    {
+        return view('files.manage', ['files' => Auth::user()->files()->get()]);
     }
 }

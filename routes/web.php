@@ -39,6 +39,7 @@ Route::controller(FileController::class)->group(function () {
         // Delete File
 
         // Manage Files
+        Route::get('/files/manage', 'manage');
     });
 });
 

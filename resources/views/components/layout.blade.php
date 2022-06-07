@@ -63,9 +63,9 @@
   <div class="flex flex-col min-h-full overflow-hidden">
     <nav class="bg-lightPeach-500 shadow z-10">
       <div class="container mx-auto p-4">
-        <div class="flex justify-between">
+        <div class="flex">
           <!-- Logo -->
-          <div class="">
+          <div class="mr-12">
             <a href="/"><img src="{{ asset('img/logo.svg') }}" class="h-12" alt="" /></a>
           </div>
           <!-- Navbar -->
@@ -74,8 +74,9 @@
             <a href="/terms" class="hover:text-deepPineGreen-100 text-2xl">Правила</a>
             <a href="/faq" class="hover:text-deepPineGreen-100 text-2xl">FAQ</a>
           </div>
-          @auth
-            <div class="flex justify-between items-center space-x-6">
+
+          <div class="flex justify-between items-center space-x-6 ml-auto">
+            @auth
               <a href="/files/manage" class="hover:text-deepPineGreen-100 text-lg"><i class="fa-solid fa-list"></i></i>
                 Мои файлы</a>
               <form action="/logout" method="POST">
@@ -85,17 +86,16 @@
                   Выйти
                 </button>
               </form>
-            </div>
-          @else
-            <!-- Register/Login -->
-            <div class="flex justify-between items-center space-x-6">
+            @else
               <a href="/register" class="hover:text-deepPineGreen-100 text-lg"><i class="fa-solid fa-user-plus"></i>
                 Зарегистрироваться</a>
               <a href="/login" class="hover:text-deepPineGreen-100 text-lg"><i
                   class="fa-solid fa-arrow-right-to-bracket"></i>
                 Войти</a>
-            </div>
-          @endauth
+            @endauth
+          </div>
+
+
           <!-- Hamburger -->
           <!-- Menu -->
         </div>

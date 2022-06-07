@@ -30,7 +30,7 @@
             <div class="w-1/4 md:w-1/5 flex items-center justify-center">
               <div class="-mr-6 flex-auto flex flex-col items-center">
                 @if ($file->imagePath)
-                  <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full" alt="" />
+                  <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full max-h-20" alt="" />
                 @endif
                 <a href="/files/{{ $file->id }}"
                   class="block text-center hover:text-orange-600">{{ $file->name }}</a>

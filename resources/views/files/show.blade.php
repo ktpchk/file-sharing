@@ -12,7 +12,8 @@
         <!-- Image -->
         <div class="mb-6 max-w-3xl">
           @if ($file->imagePath)
-            <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full" alt="" />
+            <img src="{{ asset('storage/' . $file->imagePath) }}"
+              class="max-w-full p-6 border-2 border-deepPineGreen-400/10" alt="" />
           @endif
         </div>
         <!-- Information -->
@@ -44,9 +45,9 @@
         </ul>
         <!-- Comment -->
         @if ($file->comment)
-          <div class="self-stretch w-1/2 mx-auto mb-6 p-10 rounded-md border border-lightPeach-900">
-            <h3 class="text-xl mb-2">Комментарий автора</h3>
-            <p class="text-left">
+          <div class="w-1/2 mx-auto mb-6 px-10 py-4 rounded-md border border-lightPeach-900">
+            <h3 class="text-2xl mb">Описание</h3>
+            <p class="text-left text-lg text-deepPineGreen-50">
               {{ $file->comment }}
             </p>
           </div>
