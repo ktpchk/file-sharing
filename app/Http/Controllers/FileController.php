@@ -101,6 +101,9 @@ class FileController extends Controller
             abort(403, 'Недоступное действие');
         }
         $file->delete();
+        Storage::delete($file->path);
+        if ($file->imagePath) Storage::delete('public/' . $file->imagePath);
+
         return redirect('/files/manage')->with('message', 'Файл успешно удален!');
     }
 }
