@@ -1,4 +1,4 @@
-<form action="/latest">
+<form action="{{ parse_url(url()->current(), PHP_URL_PATH) }}">
   <x-card class="relative my-4">
     <label for="search" class="absolute top-4 left-3">
       <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>

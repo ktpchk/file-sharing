@@ -33,10 +33,13 @@ Route::controller(FileController::class)->group(function () {
         Route::post('/files', 'store');
 
         // Show Edit Form
+        Route::get('/files/{file}/edit', 'edit');
 
         // Update File Data
+        Route::patch('/files/{file}', 'update');
 
         // Delete File
+        Route::delete('/files/{file}', 'destroy');
 
         // Manage Files
         Route::get('/files/manage', 'manage');

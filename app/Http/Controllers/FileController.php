@@ -15,7 +15,7 @@ class FileController extends Controller
         $searchValue = $request->search;
 
         return view('files.index', [
-            'files' => File::latest()->limit(100)->filter(request('search'))->get(),
+            'files' => File::latest()->limit(100)->filter($searchValue)->get(),
             'searchValue' => $searchValue
         ]);
     }
@@ -65,8 +65,42 @@ class FileController extends Controller
     }
 
     // Manage Files
-    public function manage()
+    public function manage(Request $request)
     {
-        return view('files.manage', ['files' => Auth::user()->files()->get()]);
+        $searchValue = $request->search;
+        return view('files.manage', [
+            'files' => Auth::user()->files()->latest()->filter($searchValue)->get(),
+            'searchValue' => $searchValue
+        ]);
+    }
+
+    // Show Edit Form
+    public function edit(File $file)
+    {
+        return view('files.edit', ['file' => $file]);
+    }
+
+    // Update File Data
+    public function update(Request $request, File $file)
+    {
+        $input = $request->validate([
+            'comment' => 'nullable|max:255'
+        ]);
+        $data = [
+            'comment' => $input['comment']
+        ];
+        $file->update($data);
+        return redirect('/files/manage')->with('message', 'Файл успешно отредактирован!');
+    }
+
+    // Delete File
+    public function destroy(File $file)
+    {
+        // Make sure logged in user is owner
+        if ($file->user_id != auth()->id()) {
+            abort(403, 'Недоступное действие');
+        }
+        $file->delete();
+        return redirect('/files/manage')->with('message', 'Файл успешно удален!');
     }
 }
