@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Content;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -20,8 +21,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'john@gmail.com'
         ]);
 
-        File::factory(6)->create([
+        $file = File::factory()->create([
             'user_id' => $user->id
+        ]);
+
+        Content::factory()->create([
+            'file_id' => $file->id
         ]);
     }
 }

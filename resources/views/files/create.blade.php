@@ -5,7 +5,7 @@
 
       <form action="/files" method="post" class="h-full" enctype="multipart/form-data">
         @csrf
-        <div
+        <div id="dropArea"
           class="w-96 h-60 mx-auto border-4 border-dashed border-deepPineGreen-50 border-opacity-50 hover:bg-lightPeach-900 hover:bg-opacity-25">
 
           <label class="h-full cursor-pointer flex items-center justify-around">
@@ -25,16 +25,9 @@
         <div id="form" class="hidden w-96 mx-auto">
           <x-card class="mt-4 p-4 flex flex-col space-y-3">
 
-            {{-- <div class="flex flex-col space-y-1 items-center justify-between">
-              <label for="name" class="self-start">Имя файла:</label>
-              <input id="name" name="name" type="text"
-                class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50" />
-            </div> --}}
-
             <div class="flex flex-col space-y-1 items-center justify-between">
               <label for="comment" class="self-start">Ваш комментарий:</label>
-              <textarea id="comment" name="comment" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50"
-                rows="7"></textarea>
+              <textarea id="comment" name="comment" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50" rows="7"></textarea>
             </div>
 
             <div>

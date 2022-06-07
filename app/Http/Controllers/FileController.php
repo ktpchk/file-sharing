@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
 
 class FileController extends Controller
 {
@@ -38,19 +40,42 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg'];
+        $audioExtensions = ['mp3', 'wav'];
+        $videoExtensions = ['mp4'];
+        $mediaExtensions = array_merge($imageExtensions, $audioExtensions, $videoExtensions);
+
         $input = $request->validate([
-            'file' => 'required|file',
+            'file' => 'required|file|max:8192',
             'comment' => 'nullable|max:255'
         ]);
-        $data = [
+
+        $fileData = [
             'user_id' => auth()->id(),
             'name' => $input['file']->getClientOriginalName(),
             'path' => $input['file']->store('uploads/' . date('Y-m')),
-            'imagePath' =>  in_array($input['file']->extension(), $imageExtensions) ? $request->file('file')->store('images', 'public') : null,
             'size' => $input['file']->getSize(),
             'comment' => $input['comment']
         ];
-        File::create($data);
+        $file = File::create($fileData);
+
+        if (in_array($input['file']->extension(), $mediaExtensions)) {
+            if (in_array($input['file']->extension(), $imageExtensions)) {
+                $type = 'image';
+            } elseif (in_array($input['file']->extension(), $audioExtensions)) {
+                $type = 'audio';
+            } elseif (in_array($input['file']->extension(), $videoExtensions)) {
+                $type = 'video';
+            }
+
+            $contentData = [
+                'file_id' => $file->id,
+                'type' => $type,
+                'path' => $input['file']->store($type, 'public')
+            ];
+
+            Content::create($contentData);
+        }
+
 
         return redirect('/')->with('message', 'Файл успешно загружен!');
     }
@@ -100,9 +125,13 @@ class FileController extends Controller
         if ($file->user_id != auth()->id()) {
             abort(403, 'Недоступное действие');
         }
+
+        if ($file->content) {
+            Storage::delete('public/' . $file->content->path);
+        }
         $file->delete();
         Storage::delete($file->path);
-        if ($file->imagePath) Storage::delete('public/' . $file->imagePath);
+
 
         return redirect('/files/manage')->with('message', 'Файл успешно удален!');
     }

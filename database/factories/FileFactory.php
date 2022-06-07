@@ -16,7 +16,6 @@ class FileFactory extends Factory
         return [
             'name' => $this->faker->word() . '.' . $this->faker->fileExtension(),
             'path' => 'uploads/' . preg_replace('#[ \\.]#', '', $this->faker->sentence()),
-            'imagePath' => null,
             'size' => $this->faker->randomNumber(3),
             'comment' => $this->faker->paragraph(3)
         ];

@@ -11,9 +11,17 @@
         </h2>
         <!-- Image -->
         <div class="mb-6 max-w-3xl">
-          @if ($file->imagePath)
-            <img src="{{ asset('storage/' . $file->imagePath) }}"
-              class="max-w-full p-6 border-2 border-deepPineGreen-400/10" alt="" />
+          @if ($file->content)
+            @if ($file->content->type == 'audio')
+              <audio controls>
+                <source src="{{ asset('storage/' . $file->content->path) }}" type="audio/mpeg">
+              </audio>
+            @elseif($file->content->type == 'image')
+              <img src="{{ asset('storage/' . $file->content->path) }}"
+                class="max-w-full p-6 border-2 border-deepPineGreen-400/10" alt="" />
+            @elseif($file->content->type == 'video')
+              <video src="{{ asset('storage/' . $file->content->path) }}" controls class="max-w-sm"></video>
+            @endif
           @endif
         </div>
         <!-- Information -->

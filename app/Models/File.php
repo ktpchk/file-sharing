@@ -10,7 +10,7 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'comment', 'size', 'user_id', 'path', 'imagePath'];
+    protected $fillable = ['name', 'comment', 'size', 'user_id', 'path'];
 
     public function scopeFilter($query, $search)
     {
@@ -24,5 +24,11 @@ class File extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    //Relationship To Content
+    public function content()
+    {
+        return $this->hasOne(Content::class, 'file_id');
     }
 }

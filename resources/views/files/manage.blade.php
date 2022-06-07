@@ -3,10 +3,16 @@
     <header class="text-center mt-8 mb-6">
       <h2 class="text-5xl">Мои файлы</h2>
     </header>
-    <div class="mx-6">
+    <div class="mx-6 flex flex-col">
+
+      <div class="">
+        <a href="/" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600"><i
+            class="fa-solid fa-file-arrow-up"></i> Загрузить файлы</a>
+      </div>
+
       @include('partials._search')
 
-      <x-card class="my-6 p-6">
+      <x-card class="my-2 p-6">
         <div class="flex flex-col">
           @unless(count($files) == 0)
             {{-- row --}}
@@ -15,7 +21,9 @@
                 {{-- cell --}}
                 <div class="w-1/5">
                   <div class="flex flex-col justify-center items-center">
-                    <img src="{{ asset('storage/' . $file->imagePath) }}" class="max-w-full max-h-20" alt="123" />
+                    @if ($file->content->type == 'image')
+                      <img src="{{ asset('storage/' . $file->content->path) }}" class="max-w-full max-h-20" alt="" />
+                    @endif
                     <a href="/files/{{ $file->id }}" class="text-center hover:text-orange-600">{{ $file->name }}</a>
                   </div>
                 </div>
