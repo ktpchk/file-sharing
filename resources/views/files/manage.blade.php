@@ -21,7 +21,7 @@
                 {{-- cell --}}
                 <div class="w-1/5">
                   <div class="flex flex-col justify-center items-center">
-                    @if ($file->content->type == 'image')
+                    @if ($file->content->type ?? false == 'image')
                       <img src="{{ asset('storage/' . $file->content->path) }}" class="max-w-full max-h-20" alt="" />
                     @endif
                     <a href="/files/{{ $file->id }}" class="text-center hover:text-orange-600">{{ $file->name }}</a>

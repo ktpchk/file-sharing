@@ -30,7 +30,7 @@
             <x-card class="p-4 flex">
               <div class="w-1/4 md:w-1/5 flex items-center justify-center">
                 <div class="-mr-6 flex-auto flex flex-col items-center">
-                  @if ($file->content->type == 'image')
+                  @if ($file->content->type ?? false == 'image')
                     <img src="{{ asset('storage/' . $file->content->path) }}" class="max-w-full max-h-20" alt="" />
                   @endif
                   <a href="/files/{{ $file->id }}"
