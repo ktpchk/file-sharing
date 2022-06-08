@@ -8,7 +8,7 @@
   <div class="flex flex-col mb-2">
     @auth
       <button class="self-start text-orange-900 mb-2"
-        onclick="this.parentNode.lastElementChild.classList.toggle('hidden')">Ответить</button>
+        onclick="this.nextElementSibling.classList.toggle('hidden')">Ответить</button>
       <div class="hidden">
         @include('comments.form', ['parentId' => $comment->id])
       </div>
