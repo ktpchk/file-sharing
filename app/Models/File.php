@@ -10,13 +10,13 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'comment', 'size', 'user_id', 'path'];
+    protected $fillable = ['name', 'description', 'size', 'user_id', 'path'];
 
     public function scopeFilter($query, $search)
     {
         if ('search' ?? false) {
             $query->where('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('comment', 'LIKE', '%' . $search . '%');
+                ->orWhere('description', 'LIKE', '%' . $search . '%');
         }
     }
 
@@ -30,5 +30,11 @@ class File extends Model
     public function content()
     {
         return $this->hasOne(Content::class, 'file_id');
+    }
+
+    //Relationship To Comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'file_id');
     }
 }

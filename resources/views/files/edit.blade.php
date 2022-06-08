@@ -46,9 +46,10 @@
           @csrf
           @method('PATCH')
           <div class="mb-6">
-            <label for="comment" class="inline-block text-lg mb-2">Ваш Комментарий</label>
-            <textarea id="comment" name="comment" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50" rows="7">{{ $file->comment }}</textarea>
-            @error('comment')
+            <label for="description" class="inline-block text-lg mb-2">Ваш Комментарий</label>
+            <textarea id="description" name="description" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50"
+              rows="7">{{ $file->description }}</textarea>
+            @error('description')
               <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
           </div>

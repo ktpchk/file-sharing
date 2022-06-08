@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Content;
 use App\Models\File;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class FileController extends Controller
 
         $input = $request->validate([
             'file' => 'required|file|max:8192',
-            'comment' => 'nullable|max:255'
+            'description' => 'nullable|max:255'
         ]);
 
         $fileData = [
@@ -54,7 +55,7 @@ class FileController extends Controller
             'name' => $input['file']->getClientOriginalName(),
             'path' => $input['file']->store('uploads/' . date('Y-m')),
             'size' => $input['file']->getSize(),
-            'comment' => $input['comment']
+            'description' => $input['description']
         ];
         $file = File::create($fileData);
 
@@ -75,7 +76,6 @@ class FileController extends Controller
 
             Content::create($contentData);
         }
-
 
         return redirect('/')->with('message', 'Файл успешно загружен!');
     }
@@ -109,10 +109,10 @@ class FileController extends Controller
     public function update(Request $request, File $file)
     {
         $input = $request->validate([
-            'comment' => 'nullable|max:255'
+            'description' => 'nullable|max:255'
         ]);
         $data = [
-            'comment' => $input['comment']
+            'description' => $input['description']
         ];
         $file->update($data);
         return redirect('/files/manage')->with('message', 'Файл успешно отредактирован!');
@@ -134,5 +134,22 @@ class FileController extends Controller
 
 
         return redirect('/files/manage')->with('message', 'Файл успешно удален!');
+    }
+
+    // Add comment
+    public function addComment(Request $request, File $file)
+    {
+        $formFields = $request->validate([
+            'body' => 'required|max:3000'
+        ]);
+
+        $formFields['parent_id'] = $request->parent_id ?? null;
+        $formFields['user_id'] = auth()->id();
+        $formFields['file_id'] = $file->id;
+
+
+        Comment::create($formFields);
+
+        return back()->with('message', 'Комментарий оставлен!');
     }
 }

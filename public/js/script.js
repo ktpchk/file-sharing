@@ -1,7 +1,6 @@
 const fileLoader = document.getElementById("fileLoader");
 const output = document.getElementById("output");
 const form = document.getElementById("form");
-
 fileLoader.addEventListener("change", loadFile);
 
 function loadFile(e) {

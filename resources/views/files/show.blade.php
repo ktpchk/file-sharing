@@ -52,11 +52,11 @@
           </li>
         </ul>
         <!-- Comment -->
-        @if ($file->comment)
+        @if ($file->description)
           <div class="w-1/2 mx-auto mb-6 px-10 py-4 rounded-md border border-lightPeach-900">
             <h3 class="text-2xl mb">Описание</h3>
             <p class="text-left text-lg text-deepPineGreen-50">
-              {{ $file->comment }}
+              {{ $file->description }}
             </p>
           </div>
         @endif
@@ -69,6 +69,24 @@
             <i class="fa-solid fa-file-arrow-down"></i> Скачать
           </a>
         </div>
+      </div>
+    </x-card>
+
+    <x-card class="my-4">
+      <div class="flex flex-col items-center justify-center text-center">
+        <h2 class="text-4xl my-6">
+          Комментарии
+        </h2>
+        <div class="mx-6 mb-6">
+          @include('comments.list', ['comments' => $file->comments, 'parentId' => null])
+        </div>
+        @auth
+          <div class="p-6 w-full">
+            <h3 class="text-left text-3xl mb-2 text-orange-900">
+              Оставить комментарий</h3>
+            @include('comments.form')
+          </div>
+        @endauth
       </div>
     </x-card>
   </div>

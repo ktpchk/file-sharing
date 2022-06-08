@@ -30,7 +30,7 @@
                 {{-- cell --}}
                 <div class="w-2/5 hidden md:block ml-4">
                   <div class="flex flex-col justify-center items-start">
-                    {{ $file->comment }}
+                    {{ $file->description }}
                   </div>
                 </div>
                 {{-- cell --}}

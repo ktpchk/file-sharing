@@ -26,8 +26,9 @@
           <x-card class="mt-4 p-4 flex flex-col space-y-3">
 
             <div class="flex flex-col space-y-1 items-center justify-between">
-              <label for="comment" class="self-start">Ваш комментарий:</label>
-              <textarea id="comment" name="comment" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50" rows="7"></textarea>
+              <label for="description" class="self-start">Ваш комментарий:</label>
+              <textarea id="description" name="description" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50"
+                rows="7"></textarea>
             </div>
 
             <div>
@@ -43,7 +44,7 @@
         @error('file')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
-        @error('comment')
+        @error('description')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
       </form>

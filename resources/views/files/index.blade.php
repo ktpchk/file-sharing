@@ -50,7 +50,7 @@
                 {{ $file->created_at->toDateString() }}
               </div>
               <div class="w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-                {{ $file->comment }}
+                {{ $file->description }}
               </div>
               <div class="w-1/4 md:w-1/5 text-center flex justify-center items-center">
                 <!-- button -->

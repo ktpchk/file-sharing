@@ -43,6 +43,9 @@ Route::controller(FileController::class)->group(function () {
 
         // Manage Files
         Route::get('/files/manage', 'manage');
+
+        // Add Comment
+        Route::post('/files/{file}/comments', 'addComment');
     });
 });
 

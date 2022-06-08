@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Content;
 use App\Models\File;
 use App\Models\User;
@@ -26,6 +27,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Content::factory()->create([
+            'file_id' => $file->id
+        ]);
+
+        Comment::factory()->create([
+            'user_id' =>  $user->id,
             'file_id' => $file->id
         ]);
     }
