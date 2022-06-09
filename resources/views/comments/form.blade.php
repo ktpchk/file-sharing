@@ -12,7 +12,7 @@
 
   <div class="mb-6 flex justify-start">
     <button type="submit" class="p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600 font-medium">
-      <i class="fa-solid fa-paper-plane"></i> Отправить
+      <i class="fa-solid fa-paper-plane"></i> Leave
     </button>
   </div>
 </form>
