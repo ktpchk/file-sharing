@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="h-full">
+<html lang="en" class="h-full">
 
 <head>
   <meta charset="UTF-8" />
@@ -26,8 +26,8 @@
           </div>
           <!-- Navbar -->
           <div class="hidden md:flex justify-between items-center space-x-12">
-            <a href="/files/latest" class="hover:text-deepPineGreen-100 text-sm lg:text-2xl">Недавнее</a>
-            <a href="/terms" class="hover:text-deepPineGreen-100 text-sm lg:text-2xl">Правила</a>
+            <a href="/files/latest" class="hover:text-deepPineGreen-100 text-sm lg:text-2xl">Latest</a>
+            <a href="/terms" class="hover:text-deepPineGreen-100 text-sm lg:text-2xl">Terms</a>
             <a href="/faq" class="hover:text-deepPineGreen-100 text-sm lg:text-2xl">FAQ</a>
           </div>
 
@@ -35,21 +35,21 @@
             @auth
               <a href="/files/manage" class="hover:text-deepPineGreen-100 text-xs lg:text-lg"><i
                   class="fa-solid fa-list"></i></i>
-                Мои файлы</a>
+                Manage files</a>
               <form action="/logout" method="POST">
                 @csrf
                 <button class="font-medium hover:text-deepPineGreen-100 text-xs lg:text-lg">
                   <i class="fa-solid fa-door-open"></i>
-                  Выйти
+                  Log out
                 </button>
               </form>
             @else
               <a href="/register" class="hover:text-deepPineGreen-100 text-xs lg:text-lg"><i
                   class="fa-solid fa-user-plus"></i>
-                Зарегистрироваться</a>
+                Sign up</a>
               <a href="/login" class="hover:text-deepPineGreen-100 text-xs lg:text-lg"><i
                   class="fa-solid fa-arrow-right-to-bracket"></i>
-                Войти</a>
+                Login</a>
             @endauth
           </div>
           <!-- Hamburger -->
@@ -64,8 +64,8 @@
         <div class="lg:hidden">
           <div id="menu"
             class="absolute hidden flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
-            <a href="/files/latest">Недавнее</a>
-            <a href="/terms">Правила</a>
+            <a href="/files/latest">Latest</a>
+            <a href="/terms">Terms</a>
             <a href="/faq">FAQ</a>
           </div>
         </div>

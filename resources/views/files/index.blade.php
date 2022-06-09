@@ -2,25 +2,25 @@
   <div class="container mx-auto">
     <div class="mx-2">
       <h2 class="text-4xl text-center m-4 py-6">
-        Последние загруженные пользователями файлы
+        Latest uploaded files
       </h2>
       @include('partials._search')
 
       <x-card class="p-2 flex">
         <div class="w-1/3 sm:w-1/4 md:w-1/5 flex items-center justify-center">
-          Имя файла
+          Name
         </div>
         <div class="w-1/3 sm:w-1/4 md:w-1/5 flex items-center justify-center">
-          Размер
+          Size
         </div>
         <div class="w-1/3 sm:w-1/4 md:w-1/5 hidden items-center justify-center sm:flex">
-          Дата загрузки
+          Uploaded at
         </div>
         <div class="w-1/3 sm:w-1/4 md:w-1/5 hidden items-center justify-center md:flex">
-          Комментарий
+          Description
         </div>
         <div class="w-1/3 sm:w-1/4 md:w-1/5 flex items-center justify-center">
-          Скачать
+          Download
         </div>
       </x-card>
 
@@ -64,9 +64,9 @@
         @else
           <x-card class="p-4">
             @if ($searchValue)
-              <div class="">Файлы по запросу "{{ $searchValue }}" не найдены.</div>
+              <div class="">There are no files like "{{ $searchValue }}"</div>
             @else
-              <div class="">Файлы не найдены.</div>
+              <div class="">There are no files</div>
             @endif
           </x-card>
         @endunless

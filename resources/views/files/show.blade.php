@@ -2,7 +2,7 @@
   <div class="container mx-auto">
     <div class="mx-6">
       <a href="{{ url()->previous() }}" class="inline-block ml-4 mt-4 hover:text-deepPineGreen-100 text-2xl"><i
-          class="fa-solid fa-arrow-left"></i> Назад
+          class="fa-solid fa-arrow-left"></i> Back
       </a>
       <x-card class="my-4 p-8">
         <div class="flex flex-col items-center justify-center text-center">
@@ -28,19 +28,19 @@
           <!-- Information -->
           <ul class="flex flex-col mb-4 w-full text-xs md:text-2xl">
             <li class="flex space-x-5 border-b border-lightPeach-900">
-              <div class="">Имя файла:</div>
+              <div class="">Name:</div>
               <h3 class=" text-deepPineGreen-50 mb-2 truncate">
                 {{ $file->name }}
               </h3>
             </li>
             <li class="flex space-x-5 border-b border-lightPeach-900">
-              <div class="">Расширение файла:</div>
+              <div class="">Extension:</div>
               <div class=" font-bold text-orange-900 mb-2 truncate">
                 {{ preg_replace('/[\\w\\W]*\\./', '', $file->name) }}
               </div>
             </li>
             <li class="flex items-baseline space-x-5 border-b border-lightPeach-900">
-              <div class="">Размер файла:</div>
+              <div class="">Size:</div>
               <div class=" font-bold text-orange-900 mb-2">
                 @if ($file->size <= 1024)
                   {{ $file->size }} bytes
@@ -52,7 +52,7 @@
               </div>
             </li>
             <li class="flex items-baseline space-x-5 border-b border-lightPeach-900">
-              <div class="">Дата загрузки:</div>
+              <div class="">Uploaded at:</div>
               <div class=" font-bold text-orange-900 mb-2">
                 {{ $file->created_at->toDateString() }}
               </div>
@@ -61,7 +61,7 @@
           <!-- Comment -->
           @if ($file->description)
             <div class="w-5/6 md:w-1/2 mx-auto mb-6 px-10 py-4 rounded-md border border-lightPeach-900">
-              <h3 class="text-2xl mb">Описание</h3>
+              <h3 class="text-2xl mb">Description</h3>
               <p class="text-left text-lg text-deepPineGreen-50">
                 {{ $file->description }}
               </p>
@@ -82,20 +82,20 @@
       <x-card class="my-4">
         <div class="flex flex-col items-center justify-center">
           <h2 class="text-4xl my-4">
-            Комментарии
+            Comment section
           </h2>
           <div class="px-6 mb-6 w-full">
             @unless(count($file->comments) == 0)
               @include('comments.list', ['comments' => $file->comments, 'parentId' => null])
             @else
-              Пока что комментариев нет
+              There are no comments yet
             @endunless
 
           </div>
           @auth
             <div class="p-6 w-full">
               <h3 class="text-left text-3xl mb-2 text-orange-900">
-                Оставить комментарий</h3>
+                Leave a comment</h3>
               @include('comments.form')
             </div>
           @endauth

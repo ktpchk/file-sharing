@@ -1,13 +1,13 @@
 <x-layout>
   <div class="container mx-auto">
     <header class="text-center mt-8 mb-6">
-      <h2 class="text-5xl">Мои файлы</h2>
+      <h2 class="text-5xl">Manage Files</h2>
     </header>
     <div class="mx-6 flex flex-col">
 
       <div class="">
         <a href="/" class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600"><i
-            class="fa-solid fa-file-arrow-up"></i> Загрузить файлы</a>
+            class="fa-solid fa-file-arrow-up"></i> Upload files</a>
       </div>
 
       @include('partials._search')
@@ -40,13 +40,13 @@
                     <div class="">
                       <a href="/files/{{ $file->id }}/edit" class="hover:text-deepPineGreen-100 text-xs md:text-lg"><i
                           class="fa-solid fa-pencil"></i>
-                        Редактировать</a>
+                        Edit</a>
                     </div>
                     <form action="/files/{{ $file->id }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button class="font-medium text-orange-400 hover:text-orange-200 text-xs md:text-lg">
-                        <i class="fa-solid fa-trash-can"></i> Удалить
+                        <i class="fa-solid fa-trash-can"></i> Delete
                       </button>
                     </form>
                   </div>
@@ -55,9 +55,9 @@
             @endforeach
           @else
             @if ($searchValue)
-              <div class="">Файлы по запросу "{{ $searchValue }}" не найдены.</div>
+              <div class="">There are no files like "{{ $searchValue }}"</div>
             @else
-              <div class="">Файлы не найдены.</div>
+              <div class="">There are no files</div>
             @endif
           @endunless
         </div>

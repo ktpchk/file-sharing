@@ -32,7 +32,7 @@ class UserController extends Controller
         // Login
         auth()->login($user);
 
-        return redirect('/')->with('message', 'Регистрация прошла успешно!');
+        return redirect('/')->with('message', 'Successfully signed up!');
     }
 
     // Show Login Form
@@ -51,9 +51,9 @@ class UserController extends Controller
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'Вы успешно вошли!');
+            return redirect('/')->with('message', 'Successfully logged in!');
         }
-        return back()->withErrors(['email' => 'Пароль или логин были введены неправильно'])->onlyInput('email');
+        return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
     }
 
     // Logout User
@@ -64,6 +64,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'Вы успешно вышли!');
+        return redirect('/')->with('message', 'Successfully logged out!');
     }
 }

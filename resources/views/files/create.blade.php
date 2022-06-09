@@ -12,7 +12,7 @@
             <div class="flex flex-col items-center w-full space-y-4">
               <div class="text-deepPineGreen-50 bg-inherit">
                 <i class="fa-solid fa-file-arrow-up"></i>
-                Выберите файл
+                Select file...
               </div>
               <input type="file" name="file" class="hidden" id="fileLoader" />
               <div id="output" class="w-10/12 text-deepPineGreen-200 truncate"></div>
@@ -26,7 +26,7 @@
           <x-card class="mt-4 p-4 flex flex-col space-y-3">
 
             <div class="flex flex-col space-y-1 items-center justify-between">
-              <label for="description" class="self-start">Ваш комментарий:</label>
+              <label for="description" class="self-start">Your comment:</label>
               <textarea id="description" name="description" class="w-full mx-auto p-2 rounded-md border-2 border-deepPineGreen-50"
                 rows="7"></textarea>
             </div>
@@ -34,7 +34,7 @@
             <div>
               <button type="submit"
                 class="block w-2/3 mx-auto p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600 font-medium">
-                Загрузить
+                Upload
               </button>
             </div>
 

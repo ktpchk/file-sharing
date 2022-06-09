@@ -2,7 +2,7 @@
   <div class="container mx-auto flex-auto flex items-center justify-center">
     <x-card class="mx-6 my-12 p-4">
       <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">Войти в аккаунт</h2>
+        <h2 class="text-2xl font-bold uppercase mb-1">Login</h2>
       </header>
 
       <form method="POST" action="/users/authenticate">
@@ -17,7 +17,7 @@
 
         <div class="mb-6">
           <label for="password" class="inline-block text-lg mb-2">
-            Пароль
+            Password
           </label>
           <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password" />
           @error('password')
@@ -28,14 +28,14 @@
         <div class="mb-6 flex justify-center">
           <button type="submit"
             class="p-2 w-2/3 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600 font-medium">
-            Войти
+            Sign in
           </button>
         </div>
 
         <div class="mt-8">
           <p>
-            Еще нет аккаунта?
-            <a href="/register" class="text-orange-600 hover:text-orange-200">Зарегистрироваться</a>
+            Don't have an account?
+            <a href="/register" class="text-orange-600 hover:text-orange-200">Register</a>
           </p>
         </div>
       </form>

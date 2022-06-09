@@ -76,7 +76,7 @@ class FileController extends Controller
             Content::create($contentData);
         }
 
-        return redirect('/')->with('message', 'Файл успешно загружен!');
+        return redirect('/')->with('message', 'File uploaded successfully !');
     }
 
     // Download File
@@ -114,7 +114,7 @@ class FileController extends Controller
             'description' => $input['description']
         ];
         $file->update($data);
-        return redirect('/files/manage')->with('message', 'Файл успешно отредактирован!');
+        return redirect('/files/manage')->with('message', 'File edited successfully!');
     }
 
     // Delete File
@@ -132,7 +132,7 @@ class FileController extends Controller
         Storage::delete($file->path);
 
 
-        return redirect('/files/manage')->with('message', 'Файл успешно удален!');
+        return redirect('/files/manage')->with('message', 'File deleted successfully!');
     }
 
     // Add comment
@@ -149,6 +149,6 @@ class FileController extends Controller
 
         Comment::create($formFields);
 
-        return back()->with('message', 'Комментарий оставлен!');
+        return back()->with('message', 'Comment successfully leaved!');
     }
 }
