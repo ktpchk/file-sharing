@@ -33,21 +33,21 @@
 
           <div class="flex justify-between items-center space-x-6 mr-auto md:ml-auto md:mr-0">
             @auth
-              <a href="/files/manage" class="hover:text-deepPineGreen-100 text-xs lg:text-lg"><i
+              <a href="/files/manage" class="hover:text-deepPineGreen-100 text-sm lg:text-lg"><i
                   class="fa-solid fa-list"></i></i>
                 Manage files</a>
               <form action="/logout" method="POST">
                 @csrf
-                <button class="font-medium hover:text-deepPineGreen-100 text-xs lg:text-lg">
+                <button class="font-medium hover:text-deepPineGreen-100 text-sm lg:text-lg">
                   <i class="fa-solid fa-door-open"></i>
                   Log out
                 </button>
               </form>
             @else
-              <a href="/register" class="hover:text-deepPineGreen-100 text-xs lg:text-lg"><i
+              <a href="/register" class="hover:text-deepPineGreen-100 text-sm lg:text-lg"><i
                   class="fa-solid fa-user-plus"></i>
                 Sign up</a>
-              <a href="/login" class="hover:text-deepPineGreen-100 text-xs lg:text-lg"><i
+              <a href="/login" class="hover:text-deepPineGreen-100 text-sm lg:text-lg"><i
                   class="fa-solid fa-arrow-right-to-bracket"></i>
                 Login</a>
             @endauth
