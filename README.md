@@ -1,64 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# File Sharing
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Requirements
 
-## About Laravel
+-   PHP 7.4+
+-   Composer
+-   npm
+-   Configured Apache web server
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Clone repo locally:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```sh
+  $ git clone https://github.com/kotopuchok/file-sharing.git
+```
 
-## Learning Laravel
+Cd into project folder and run:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```sh
+  $ composer install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Then:
 
-## Laravel Sponsors
+```sh
+  $ npm install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Copy `.env.example` file to new `.env` file:
 
-### Premium Partners
+```sh
+  $ cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Create a new application encryption key:
 
-## Contributing
+```sh
+  $ php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Create database, and in `.env` fill `DB_*` fields with database's credentials
 
-## Code of Conduct
+Run the migrations:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```sh
+  $ php artisan migrate
+```
 
-## Security Vulnerabilities
+Link your `public/storage` folder to `storage/app/public` folder:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```sh
+  $ php artisan link
+```
+
+## Features
+
+-   User registration
+-   File uploading
+-   File downloading
+-   File editing
+-   File deleting
+-   File searching
+-   User's uploaded files page
+-   Recently uploaded files page
+-   File's information page
+-   Preview for image files
+-   Players for audio and video files
+-   Nested comments
+-   Adaptive design
+-   Flash messages
+
+## Screenshots
+![register](https://user-images.githubusercontent.com/104438625/172854272-f18567e2-a5fa-49f1-a154-761ee12323d1.png)
+![file_uploading](https://user-images.githubusercontent.com/104438625/172854328-6b2ad2e5-c627-43d8-af8e-740aad970772.png)
+![flash_message](https://user-images.githubusercontent.com/104438625/172854412-23a23aa3-7d03-4dcd-871c-0b25a4253d0a.png)
+![latest](https://user-images.githubusercontent.com/104438625/172854576-ccc6ee8e-2360-447d-be59-c79025b2e7c1.png)
+![file_managing](https://user-images.githubusercontent.com/104438625/172854642-b4fcee6a-36cc-47c9-8b43-64dc394ba756.png)
+![file_page](https://user-images.githubusercontent.com/104438625/172854712-081b7e26-ece5-4e4f-9fd5-b9b1a6064503.png)
+![comment_section](https://user-images.githubusercontent.com/104438625/172854723-f51ad032-f68d-4892-9c0d-a636ed8bff97.png)
+![mobile](https://user-images.githubusercontent.com/104438625/172854738-5fd6ad93-aa1d-44df-8261-7851a7491f47.png)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This app uses
+
+-   The Laravel framework which is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   The Tailwind css framework which is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
