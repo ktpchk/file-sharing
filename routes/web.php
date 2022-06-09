@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/terms', function () {
+    return view('terms');
+});
+
+Route::get('/faq', function () {
+    return view('faq');
+});
+
 Route::controller(FileController::class)->group(function () {
     // Show Create Form
     Route::get('/', 'create');

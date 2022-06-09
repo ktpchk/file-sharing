@@ -1,9 +1,9 @@
 <x-layout>
   <div class="container mx-auto">
-    <h2 class="text-5xl text-center m-4 py-6">
-      Последние загруженные пользователями файлы
-    </h2>
-    <div class="mx-6">
+    <div class="mx-2">
+      <h2 class="text-4xl text-center m-4 py-6">
+        Последние загруженные пользователями файлы
+      </h2>
       @include('partials._search')
 
       <x-card class="p-2 flex">
@@ -29,12 +29,12 @@
           @foreach ($files as $file)
             <x-card class="p-4 flex">
               <div class="w-1/3 sm:w-1/4 md:w-1/5 flex items-center justify-center">
-                <div class="-mr-6 flex-auto flex flex-col items-center">
+                <div class="flex-auto flex flex-col items-center">
                   @if ($file->content->type ?? false == 'image')
                     <img src="{{ asset('storage/' . $file->content->path) }}" class="max-w-full max-h-20" alt="" />
                   @endif
                   <a href="/files/{{ $file->id }}"
-                    class="block text-center hover:text-orange-600">{{ $file->name }}</a>
+                    class="block text-center hover:text-orange-600">{{ mb_strimwidth($file->name, 0, 15, '...') }}</a>
                 </div>
               </div>
               <div class="w-1/3 sm:w-1/4 md:w-1/5 flex items-center justify-center">

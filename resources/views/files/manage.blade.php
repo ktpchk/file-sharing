@@ -24,7 +24,8 @@
                     @if ($file->content->type ?? false == 'image')
                       <img src="{{ asset('storage/' . $file->content->path) }}" class="max-w-full max-h-20" alt="" />
                     @endif
-                    <a href="/files/{{ $file->id }}" class="text-center hover:text-orange-600">{{ $file->name }}</a>
+                    <a href="/files/{{ $file->id }}"
+                      class="text-center hover:text-orange-600 text-xs md:text-lg">{{ mb_strimwidth($file->name, 0, 15, '...') }}</a>
                   </div>
                 </div>
                 {{-- cell --}}
@@ -35,16 +36,16 @@
                 </div>
                 {{-- cell --}}
                 <div class="ml-auto">
-                  <div class="flex justify-end space-x-12 ">
+                  <div class="flex justify-end space-x-2 md:space-x-12 ">
                     <div class="">
-                      <a href="/files/{{ $file->id }}/edit" class="hover:text-deepPineGreen-100"><i
+                      <a href="/files/{{ $file->id }}/edit" class="hover:text-deepPineGreen-100 text-xs md:text-lg"><i
                           class="fa-solid fa-pencil"></i>
                         Редактировать</a>
                     </div>
                     <form action="/files/{{ $file->id }}" method="POST">
                       @csrf
                       @method('DELETE')
-                      <button class="font-medium text-orange-400 hover:text-orange-200">
+                      <button class="font-medium text-orange-400 hover:text-orange-200 text-xs md:text-lg">
                         <i class="fa-solid fa-trash-can"></i> Удалить
                       </button>
                     </form>

@@ -6,23 +6,23 @@
       <form action="/files" method="post" class="h-full" enctype="multipart/form-data">
         @csrf
         <div id="dropArea"
-          class="w-96 h-60 mx-auto border-4 border-dashed border-deepPineGreen-50 border-opacity-50 hover:bg-lightPeach-900 hover:bg-opacity-25">
+          class="w-80 h-48 mx-auto border-4 border-dashed border-deepPineGreen-50 border-opacity-50 hover:bg-lightPeach-900 hover:bg-opacity-25">
 
           <label class="h-full cursor-pointer flex items-center justify-around">
-            <div class="flex flex-col items-center space-y-4">
+            <div class="flex flex-col items-center w-full space-y-4">
               <div class="text-deepPineGreen-50 bg-inherit">
                 <i class="fa-solid fa-file-arrow-up"></i>
                 Выберите файл
               </div>
               <input type="file" name="file" class="hidden" id="fileLoader" />
-              <div id="output" class="text-deepPineGreen-200"></div>
+              <div id="output" class="w-10/12 text-deepPineGreen-200 truncate"></div>
             </div>
           </label>
 
         </div>
 
 
-        <div id="form" class="hidden w-96 mx-auto">
+        <div id="form" class="hidden w-80 mx-auto">
           <x-card class="mt-4 p-4 flex flex-col space-y-3">
 
             <div class="flex flex-col space-y-1 items-center justify-between">

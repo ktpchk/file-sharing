@@ -73,7 +73,6 @@ class FileController extends Controller
                 'type' => $type,
                 'path' => $input['file']->store($type, 'public')
             ];
-
             Content::create($contentData);
         }
 
