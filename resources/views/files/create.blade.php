@@ -15,7 +15,7 @@
                 Select file...
               </div>
               <input type="file" name="file" class="hidden" id="fileLoader" />
-              <div id="output" class="w-10/12 text-deepPineGreen-200 truncate"></div>
+              <div id="output" class="w-10/12 text-deepPineGreen-200 text-center truncate"></div>
             </div>
           </label>
 
