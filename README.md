@@ -12,7 +12,7 @@
 Clone repo locally:
 
 ```sh
-  $ git clone https://github.com/kotopuchok/file-sharing.git
+  $ git clone https://github.com/ktpchk/file-sharing.git
 ```
 
 Cd into project folder and run:
