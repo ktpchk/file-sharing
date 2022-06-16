@@ -11,7 +11,7 @@
 
 Clone repo locally:
 
-```sh
+```shx
   $ git clone https://github.com/ktpchk/file-sharing.git
 ```
 
@@ -71,6 +71,7 @@ Link your `public/storage` folder to `storage/app/public` folder:
 -   Flash messages
 
 ## Screenshots
+
 ![register](https://user-images.githubusercontent.com/104438625/172863794-28457322-942f-4e49-8445-ce3c1a8179bf.png)
 ![file_uploading](https://user-images.githubusercontent.com/104438625/172863839-f0a1f578-9a43-4a84-a498-7e797e212f70.png)
 ![flash_message](https://user-images.githubusercontent.com/104438625/172863859-efddf98a-dc79-4b1f-bc00-a4c84801e538.png)
@@ -79,10 +80,10 @@ Link your `public/storage` folder to `storage/app/public` folder:
 ![file_page](https://user-images.githubusercontent.com/104438625/172863947-c0a9dc70-f1f2-475e-bd4f-8a69a11dcc6b.png)
 ![comment_section](https://user-images.githubusercontent.com/104438625/172864003-7b218efe-3154-4675-9f35-49390093d512.png)
 ![mobile](https://user-images.githubusercontent.com/104438625/172864026-3275ca49-e23d-4eac-ba3e-3baa3312d815.png)
+
 ## License
 
 This app uses
 
 -   The Laravel framework which is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 -   The Tailwind css framework which is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
