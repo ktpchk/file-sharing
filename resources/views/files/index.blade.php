@@ -56,7 +56,7 @@
                 <!-- button -->
                 <a href="/files/{{ $file->id }}/download"
                   class="my-4 p-2 rounded-xl text-lightPeach-300 bg-deepPineGreen-50 hover:bg-orange-600">
-                  <i class="fa-solid fa-file-arrow-down"></i> Скачать
+                  <i class="fa-solid fa-file-arrow-down"></i> Download
                 </a>
               </div>
             </x-card>
